@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.main-div {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    font-family: 'Ubuntu', sans-serif;
+    width: 30%;
+    margin: 50px 0 0 400px;
+    
+}
+
+.user-name {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+button {
+    background-color: hsl(45deg 100% 70%);
+    border: 3px solid black;
+    box-shadow: 3px 3px black;
+    font-size: medium;
+}
+
+.likes-numbers {
+    font-size: medium;
+}
+
+.text {
+    margin-left: 30px ;
+    font-size: medium;
+    width: 70%;
+}

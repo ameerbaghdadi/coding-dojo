@@ -1,0 +1,176 @@
+body {
+    background-color: hsl(208deg 53% 30%);
+    background-image: linear-gradient(hsl(208deg 53% 30%), #306da2);
+    width: 970px;
+    margin: 0 auto;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-box {
+    background-color: #444444;
+    box-shadow: 2px 2px black;
+    height: 50px;
+    width: 250px;
+    border-radius: 7px;
+}
+
+input {
+    margin: 10px 0px 10px 20px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+.go {
+    background-color: #245076;
+    border: 1px solid white;
+    margin: 0;
+}
+
+.text-size-color {
+    color: white;
+    text-align: end;
+}
+
+.link-color {
+    color: #a3971b;
+}
+
+.nav-bar {
+    width: 90%;
+    height: 50px;
+    padding: 1px;
+    background-color: #407bad;
+    margin: 0 auto;
+    margin-right: 20px;
+    border-radius: 3px;
+    box-shadow: 2px 2px black;
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    color: white;
+}
+
+.main-content {
+    display: flex;
+    padding: 30px;
+}
+
+.left-side {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-side {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+
+#dataInLeft {
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+.arrow {
+    font-size: 10px;
+    color: #a3971b;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+p {
+    line-height: 3px;
+    color: #c9ba18;
+}
+
+#lastLine {
+    color: white;
+}
+
+.whiteDiv {
+    background-color: white;
+    width: 970px;
+    height: 350px;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 25px;
+}
+
+.getting {
+    margin-top: 15px;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.application {
+    margin-top: 15px;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+hl {
+    background-color: #73a7d5;
+    height: 4px;
+}
+
+.blue-text {
+    color:  #73a7d5;
+}
+
+ul.squar-list {
+    list-style-type: square;
+    color: black;
+    display: inline;
+}
+
+.li-color {
+    color: #90bade;
+}
+
+.getting p {
+    color: red;
+}
+
+.part-of-p {
+    color: #90bade;
+}
+
+.footer-info {
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+footer p {
+    color: gray;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 0px;
+    color: grey;
+}
