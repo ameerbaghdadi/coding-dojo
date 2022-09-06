@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dojoweather.css">
+    <title>Dojo Weather</title>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <h1> DojoWeather</h1>
+            <div class="links">
+                <a onclick="alert('Loading weather report ...')" href="#">Burbank</a>  
+                <a onclick="alert('Loading weather report ...')" href="#">Chicago</a>  
+                <a onclick="alert('Loading weather report ...')" href="#">Dallas</a>  
+            </div>
+    </nav> <!--nav-->
+    <div class="belownav">
+        <div class="first">
+            <h2>San Jose</h2>
+                <div class="temp">
+                    <p>show temperature in</p>
+                    <select  class="cf" onchange=" change()" name="temp" >
+                        <option class="selection" value="Celsius">°C</option>
+                        <option  class="selection"value="Fahrenheit">°F</option>
+                    </select>
+                </div>
+        </div> <!--first-->
+
+            <div class="second">
+
+                <div class="weather">
+
+                    <div class="info">
+                        <h2>Today</h2>
+                        <img class="pic" src="some_rain.png" alt="some_rain">
+                        <p id="some">some rain</p>
+                    </div>
+
+                    <div class="highlow">
+                        <p id="high1" class="degree">24</p>
+                        <p id="low1" class="degree">18</p>
+                    </div>
+                </div><!--today---------------------------------->
+
+                <div class="weather">
+
+                    <div class="info">
+                        <h2>Tomorrow</h2>
+                        <img class="pic" src="some_sun.png" alt="some_sun">
+                        <p id="some">some rain</p>
+                    </div>
+
+                    <div class="highlow">
+                        <p id="high2" class="degree">27</p>
+                        <p id="low2"class="degree" >19</p>
+                    </div>
+                </div><!--tomorrow------------------------------->
+
+                <div class="weather">
+
+                    <div class="info">
+                        <h2>Friday</h2>
+                        <img class="pic" src="some_clouds.png" alt="some_clouds">
+                        <p id="some">some clouds</p>
+                    </div>
+
+                    <div class="highlow">
+                        <p id="high3"class="degree" >21</p>
+                        <p id="low3"class="degree" >16</p>
+                    </div>
+                </div><!--Friday------------------------>
+
+                <div class="weather">
+
+                    <div class="info">
+                        <h2>Saturday</h2>
+                        <img class="pic" src="some_sun.png" alt="some_sun">
+                        <p id="some">some rain</p>
+                    </div>
+
+                    <div class="highlow">
+                        <p id="high4" class="degree" >26</p>
+                        <p id="low4" class="degree" >21</p>
+                </div><!--Saturday----------------------->
+                    
+
+                
+            </div> <!--second-->
+            
+                <div class="third">
+                    <div id="cookie">
+                        <img src="cookie.png" alt="cookie">
+                    </div>
+
+                    <div class="stop">
+                        <h3>Stop! cookie time</h3>
+                         <p>we use cookies (sadly not the edible ones) to persnolize
+                            content ond ads. to provide  social media features ond to
+                            analyse our trafic. <a href="#">Read more</a> </p>
+                    </div>
+
+                    <div>
+                        <button onclick="hide()" id="accept"> I Accept</button>
+                    </div>
+
+                </div><!--third-->
+
+    </div> <!--below nave-->
+   
+
+</div> <!--container-->
+
+
+    <script src="dojoweather.js"></script>
+</body>
+</html>

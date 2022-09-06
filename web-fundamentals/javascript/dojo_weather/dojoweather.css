@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  }
+  
+  .container{
+    
+    height: 630px;
+    margin-bottom: 30px;
+
+  }
+  nav{
+    width: 100%;
+    height: 80px;
+    background-color: #9fc5f8;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+  }
+
+  .links >a {
+    color: white;
+    text-decoration: none;
+  }
+
+  nav>h1{
+ font-size: 200%;
+  }
+
+.links a{
+margin-left: 20px;
+}
+
+.first p{
+font-weight: bold;
+}
+
+
+.first{
+    width: 770px;
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+    border-bottom: 2px solid black;
+    margin-bottom: 50px;
+    margin-left: 170px;
+
+}
+
+/* #high1::after , #low1::after{
+    content:° ;
+} */
+
+.first >h2{
+    font-size: xx-large;
+}
+.belownav{
+    margin: 0 auto;
+    /* width: 100%; */
+    margin-left: 100px;
+
+}
+.temp{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.temp > select
+{
+    width: 40px;
+    height: 25px;
+}
+
+.second{
+    margin: 0 auto;
+    width: 770px;
+    height: 300px;
+    margin-left: 170px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.weather{
+    background-color: #eeeeee;
+    height: 270px;
+    width: 170px;
+    padding-top: 20px;
+}
+
+.pic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px;
+}
+.highlow{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    display: flex;
+    text-align:center ;
+    margin-left: 40px;
+    
+}
+
+.info{ 
+    text-align:center
+}
+#some{
+    font-weight: bold;
+}
+#high1,#high2,#high3,#high4{
+    color: #cf2c29;
+    font-weight: bold;
+}
+
+#low1,#low2,#low3,#low4{
+color: #3d83e5 ;
+ font-weight: bold;
+}
+
+ .third{
+    width: 770px;
+    height: 150px;
+    outline: 2px solid black;
+    margin-left: 170px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    height: 100px;
+    position: fixed;
+    left: 100px;
+    bottom: 80px;
+    
+ }
+ .stop{
+    width: 400px;
+    margin-top: 5px;
+ }
+
+ #cookie{
+    margin-top: 15px;
+ }
+
+ #accept{
+    width: 70px;
+    height: 25px;
+    background-color:#9fc5f8 ;
+    box-shadow: 2px 2px black;
+    margin-top: 35px;
+ }
+
+
+    
