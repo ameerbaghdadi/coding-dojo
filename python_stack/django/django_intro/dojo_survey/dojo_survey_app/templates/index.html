@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dojo Survey</title>
+    <link href="css/customerInfostyles.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+
+<body>
+
+    <div class="main">
+        <form class="form" action="/result" method="post">
+            {% csrf_token %}
+            <div class="info">
+                <div id="name">
+                    <label for="name">Your Name:</label>
+                    <input type="text" name="name" id="fullName" placeholder="Your Name" required="required"/>
+                </div>
+                <div id="name">
+                    <label>Dojo Locations:</label>
+                    <select name="location" class="select">
+                        <option value="San Jose">San Jose</option>
+                        <option value="Ramallah">Ramallah</option>
+                        <option value="Germany">Germany</option>
+                        <option value="india">India</option>
+                    </select>
+                </div>
+                <div id="name">
+                    <label>Favorite Language:</label>
+                        <select name="language" class="select">
+                            <option value="Python">Python</option>
+                            <option value="Javascript">Javascript</option>
+                            <option value="C++">C++</option>
+                        </select>
+                </div>
+                <div>
+                    <p>Please select your favorite Web language:</p>
+                    <input type="radio" id="html" name="fav_language" value="HTML" required="required">
+                    <label for="html">HTML</label><br>
+                    <input type="radio" id="css" name="fav_language" value="CSS" required="required">
+                    <label for="css">CSS</label><br>
+                    <input type="radio" id="javascript" name="fav_language" value="JavaScript" required="required">
+                    <label for="javascript">JavaScript</label>
+                </div>
+                <div>
+                    <p>Please select your status:</p>
+                    <input type="checkbox" id="status1" name="status" value="Student">
+                    <label>Student</label><br>
+                    <input type="checkbox" id="status2" name="status" value="Employee">
+                    <label>Employee</label><br>
+                    <input type="checkbox" id="status3" name="status" value="Other">
+                    <label>Other</label><br>
+                </div>
+                <div>
+                    <p>Comment (optional):</p><br>
+                    <textarea name="comment" rows="5" cols="65"></textarea><br>
+                </div>
+                <input type="submit" id="submit" value="Button"/>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

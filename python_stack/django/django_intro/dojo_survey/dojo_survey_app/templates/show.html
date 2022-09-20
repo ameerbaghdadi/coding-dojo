@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>Show Info</title>
+</head>
+<body>
+    <div class="table-div">
+        <table class = "result-table">
+            <tr>
+                <th>Name:</th>
+                <td>{{name}}</td>
+            </tr>
+            <tr>
+                <th>Location:</th>
+                <td>{{ location }}</td>
+            </tr>
+            <tr>
+                <th>Favorite Language:</th>
+                <td>{{ language }}</td>
+            </tr>
+            <tr>
+                <th>Favorite Web Language:</th>
+                <td>{{ fav_language }}</td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td>{{ status }}</td>
+            </tr>
+            <tr>
+                <th>Comment:</th>
+                <td>{{ comment }}</td>
+            </tr>
+
+        </table>
+    </div>
+</html>
+</body>
+</html>

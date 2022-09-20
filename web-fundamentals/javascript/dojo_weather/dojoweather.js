@@ -26,7 +26,7 @@ function hide()
         
     var y4=document.getElementById('low4').innerText;
     console.log(y4);
-   
+
         if (v=="Fahrenheit")
         {
             x1=Math.floor(x1*1.8+32);
