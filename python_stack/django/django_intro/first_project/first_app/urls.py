@@ -7,4 +7,6 @@ urlpatterns = [
     path('file', views.method3),
     path('form', views.rform),
     path('handelsubmit', views.handel),
+    path('show', views.showdata),
+    path('visits', views.visits)
 ]

@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 
 # Create your views here.
 def method1(request):
@@ -19,8 +19,22 @@ def rform(request):
     return render(request, 'form.html')
 
 def handel(request):
-    context = { 
-        'username':request.POST['name'],
-        'email':request.POST['email']
-    }
-    return render(request, 'data.html', context)
+    request.session['username']=request.POST['name']
+    request.session['email']=request.POST['email']
+
+    return redirect('/show')
+
+def showdata(request):
+    return render(request, 'data.html')
+
+def visits(request):
+    if 'counter' not in request.session:
+        request.session['counter'] = 0
+    else:
+        request.session['counter'] += 1
+
+    return render(request, 'visits.html')
+
+
+    #num_visits = request.session.get('num_visits', 0)
+    #request.session['num_visits'] = num_visits + 1
