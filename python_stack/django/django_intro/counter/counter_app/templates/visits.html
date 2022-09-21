@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Counter Django</title>
+    <style>
+        .main {
+            margin-left: 40%;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-family: cursive;
+            color: purple;
+            margin-left: 25px;
+        }
+        p {
+            font-family: cursive;
+            color: purple;
+            font-size: 25px;
+        }
+        .counts {
+            color: black;
+            margin-left: 40px;
+        }
+        input {
+            border: 2px solid black;
+            box-shadow: 4px 4px 4px 4px purple;
+            background-color: white;
+            font-size: 20px;
+            font-family: cursive;
+            margin-bottom: 10px;
+        }
+
+        .reset {
+            border: 2px solid black;
+            box-shadow: 4px 4px 4px 4px purple;
+            background-color: white;
+            font-size: 20px;
+            font-family: cursive;
+            margin-bottom: 10px;
+            margin-left: 45px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <form action="ByTwo/">
+        <h1>Counter</h1>
+        <p> <span class="counts" name='counter'>{{request.session.count}}</span> Times</p>
+        <input type="submit" , value="increment By Two">
+    </form>
+    <form action="Reset/">
+        <input type="submit" class="reset" , value="Reset">
+    </form>
+    </div>
+</body>
+</html>
