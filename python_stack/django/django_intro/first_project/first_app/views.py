@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from .models import User
 
 # Create your views here.
 def method1(request):
@@ -19,12 +20,15 @@ def rform(request):
     return render(request, 'form.html')
 
 def handel(request):
-    request.session['username']=request.POST['name']
-    request.session['email']=request.POST['email']
+    #request.session['username']=request.POST['name']
+    #request.session['email']=request.POST['email']
 
+    User.objects.create(username=request.POST['name'], email=request.POST['email'])
+    
     return redirect('/show')
 
 def showdata(request):
+    
     return render(request, 'data.html')
 
 def visits(request):

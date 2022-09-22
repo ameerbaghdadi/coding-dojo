@@ -43,8 +43,27 @@
             font-size: 20px;
             font-family: cursive;
             margin-bottom: 10px;
-            margin-left: 45px;
+            margin-left: 50px;
             margin-top: 10px;
+        }
+
+        .number {
+            border: 2px solid black;
+            box-shadow: 4px 4px 4px 4px purple;
+            background-color: white;
+            font-size: 20px;
+            font-family: cursive;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-left: 35px;
+            width: 100px;
+            cursor: pointer;
+        }
+
+        label {
+            margin-left: 15px;
+            font-size: large;
+            font-family: cursive;
         }
     </style>
 </head>
@@ -52,11 +71,15 @@
     <div class="main">
     <form action="ByTwo/">
         <h1>Counter</h1>
-        <p> <span class="counts" name='counter'>{{request.session.count}}</span> Times</p>
+        <p> <span class="counts" name='counter'>{{request.session.counter}}</span> Time(s)</p>
         <input type="submit" , value="increment By Two">
     </form>
     <form action="Reset/">
         <input type="submit" class="reset" , value="Reset">
+    </form>
+    <form action="userincrment/">
+        <label>| User Increment |</label><br>
+        <input type="number" class="number" , value="userIncrement">
     </form>
     </div>
 </body>
