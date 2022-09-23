@@ -7,9 +7,6 @@ def display(request):
 
 
 def addUser(request):
-    #request.session['username']=request.POST['name']
-    #request.session['email']=request.POST['email']
-
     Users.objects.create(firstname=request.POST['firstname'], lastname=request.POST['lastname'], email=request.POST['email'], age=request.POST['age'] )
     
     return redirect('/display')
