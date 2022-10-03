@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="/shows/{{all_shows.id}}/update">
+        {% csrf_token%}
+        <h1>Edit Show {{all_shows.id}}</h1>
+        <label>Title</label><br>
+        <input type="text" name="showTilte" value="{{all_shows.title}}"><br>
+        <label>Network</label><br>
+        <input type="text" name="network" value="{{all_shows.network}}">
+        <label>Release Date</label>
+        <input type="date" name="date" value="{{show_release_date}}"><br>
+        <label>Description</label>
+        <input type="text" name="desc" value="{{all_shows.desc}}"><br>
+        
+        <input type="submit" value="Update">
+        <a href="/shows/{{all_shows.id}}">Go to Show</a>
+    </form>
+</body>
+</html>

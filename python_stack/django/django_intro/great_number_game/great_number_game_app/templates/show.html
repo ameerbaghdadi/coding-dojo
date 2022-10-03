@@ -9,13 +9,25 @@
     <title>Number Game</title>
 </head>
 <body>
-    <h>Welcome to the Great Number Game!</h>
-    <p>I am thinking of a number between 1 and 100</p>
-    <p>Take a guess!</p>
-    <p></p>{{request.session.random}}</p>
-    <form action = 'submited/' method="post">
-        <input type="input" name="submited"><br>
-        <input type="submit" name="guessNumber" value="Submit!">
-    </form>
+    <div class="main">
+        <h>Welcome to the Great Number Game!</h>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+        <!-- <p>{{request.session.random_number}}</p> -->
+        <form action = 'submited/' method="post">
+            {%csrf_token%}
+            {% if request.session.result == 'too high' %}
+            <div class="high"><p id="high">Too high</p></div>
+            {% elif request.session.result == 'too low' %}
+            <div class="high"><p id="high">Too Low</p></div>
+            {% elif request.session.result == 'equal' %}
+            <div class="winner"><p id="high">You Win</p>
+                <a href="delete/" class="playagain">play again</a>
+            </div>
+            {%endif%}
+            <input type="input" name="submited"><br>
+            <input type="submit" name="guessNumber" value="Submit!" class="submit">
+        </form>
+    </div>
 </body>
 </html>
