@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="padding: 30px;">
+    <ul class="navbar navbar-light justify-content-between list-unstyled">
+        <li class="nav-item">
+            <h2>CodingDojo Wall</h2>
+        </li>
+        <div>
+            <li class="nav-item">
+                <p>Welcome {{user.firstname}}!</p>
+            </li>
+            <li class="nav-item">
+                <a href="/logout">Log Out</a>
+            </li>
+        </div>
+    </ul>
+    <hr>
+    <div class="main" style="display: flex; justify-content:space-around;">
+        <div style="width: 30%;">
+            <div class="d-inline">
+                <form method="post" action="/books/{{show_book.id}}/update/" class="d-inline">
+                    {% csrf_token %}
+                    {% if show_book.uploaded_by.id != user.id %}
+                    <h2>{{show_book.title}}</h2>
+                    <h6>Added by: {{show_book.uploaded_by.firstname}}</h6>
+                    <h6>Book ID: {{show_book.uploaded_by.id}}</h6>
+                    <h6>Added on: {{show_book.created_at}}</h6>
+                    <h6>Last Updated: {{show_book.updated_at}}</h6>
+                    <h5>Description: {{show_book.desc}}</h5>
+                    {% else %}
+                    <input type="text" name="title" class="form-control" value="{{show_book.title}}">
+                    <h6>Added by: {{show_book.uploaded_by.firstname}}</h6>
+                    <h6>Book ID: {{show_book.uploaded_by.id}}</h6>
+                    <h6>Added on: {{show_book.created_at}}</h6>
+                    <h6>Last Updated: {{show_book.updated_at}}</h6>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Description">{{show_book.desc}}</textarea>
+                    </div>
+                    {% endif %}
+                        {% if show_book.uploaded_by.id == user.id %}
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        {% endif %}
+                </form>
+            </div>
+            <div class="d-inline">
+                <form method="post" action="/books/{{show_book.id}}/delete/" class="d-inline">
+                    {% csrf_token %}
+                    {% if show_book.uploaded_by.id == request.session.user_id %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <div>
+            <h3>Users Who Like This Book</h3>
+            <ul class="list-group navbar navbar-light">
+                {% for liked_user in show_book.users_who_like.all %}
+                <li class="navbar-item">
+                    <h4>{{liked_user.firstname}} {{liked_user.lastname}}
+                        {% if liked_user.id == request.session.user_id %}
+                        <a href="/books/{{show_book.id}}/un_favorite/">Un-Favorite</a>
+                        {% endif %}
+                    </h4>
+                </li>
+                {% endfor %}
+                {% if not user in show_book.users_who_like.all %}
+                <a href="/books/{{show_book.id}}/add_to_favorites/">Add to Favorites</a></h4>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
