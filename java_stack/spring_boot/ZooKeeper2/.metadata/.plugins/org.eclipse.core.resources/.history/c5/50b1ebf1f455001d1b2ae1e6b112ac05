@@ -1,0 +1,17 @@
+package ZooKeeper2;
+
+public class Bat extends Mammal {
+	public void fly() {
+		System.out.println("the sound of a bat taking off and decrease its energy by 50");
+		this.setEnergyLevel(this.getEnergyLevel()-5);
+		System.out.println("the gorilla energy level is "+this.getEnergyLevel());
+	}
+	
+	public void eatHumans() {
+		
+	}
+	
+	public void attackTown() {
+		
+	}
+}

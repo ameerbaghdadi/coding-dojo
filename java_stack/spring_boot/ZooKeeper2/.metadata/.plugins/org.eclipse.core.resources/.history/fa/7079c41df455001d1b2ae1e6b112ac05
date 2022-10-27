@@ -1,0 +1,10 @@
+package ZooKeeper2;
+
+public class Bat extends Mammal {
+	public void  fly() {
+		
+	}
+	 
+	 eatHumans()
+	 attackTown();
+}

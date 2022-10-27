@@ -1,0 +1,18 @@
+package ZooKeeper2;
+public class Mammal {
+	private int energyLevel = 100;
+	
+	
+	
+	public void displayEnergy() {
+		System.out.println(getEnergyLevel());
+	}
+
+	public int getEnergyLevel() {
+		return energyLevel;
+	}
+
+	public void setEnergyLevel(int energyLevel) {
+		this.energyLevel = energyLevel;
+	}
+}
