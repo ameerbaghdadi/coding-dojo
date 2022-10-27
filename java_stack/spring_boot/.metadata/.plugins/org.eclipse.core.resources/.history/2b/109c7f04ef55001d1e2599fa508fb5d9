@@ -1,0 +1,15 @@
+package ZooKeeper1;
+
+public class Gorilla extends Mammal{
+	public void throwSomething() {
+		System.out.println("that the gorilla has thrown something");
+	}
+	
+	public void eatBananas() {
+		
+	}
+	
+	public void climb() {
+		
+	}
+}

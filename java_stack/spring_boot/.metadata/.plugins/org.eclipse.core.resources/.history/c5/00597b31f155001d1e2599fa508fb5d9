@@ -1,0 +1,21 @@
+package ZooKeeper1;
+
+public class Gorilla extends Mammal{
+	public void throwSomething() {
+		System.out.println("the gorilla has thrown something");
+		this.setEnergyLevel(this.getEnergyLevel()-5);
+		System.out.println("the gorilla decrease the energy level by 5");
+		System.out.println("the gorilla energy level is "+this.getEnergyLevel());
+	}
+	
+	public void eatBananas() {
+		System.out.println("the gorilla has eat Bananas");
+		this.setEnergyLevel(this.getEnergyLevel()+5);
+		System.out.println("the gorilla's satisfaction and increase its energy by 10");
+		System.out.println("the gorilla energy level is "+this.getEnergyLevel());
+	}
+	
+	public void climb() {
+		
+	}
+}
