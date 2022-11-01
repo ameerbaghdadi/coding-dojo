@@ -35,5 +35,7 @@ Also, <c:out value="${nice}"></c:out>
 </p>
 </div>
 
+<h2><a href="/">Go Back</a></h2>
+
 </body>
 </html>

@@ -29,7 +29,7 @@
     
      <div class="form-group mt-3">
     <label for="formGroupExampleInput">Pick any number from 5 to 25</label>
-    <input type="number" class="form-control w-25" id="formGroupExampleInput" name="number">
+    <input type="number" class="form-control w-25" id="formGroupExampleInput" name="number" required>
   </div>
     
     <div class="form-group mt-3">
