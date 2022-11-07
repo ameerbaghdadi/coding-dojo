@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+#div-style {
+    text-align: center;
+    width: 15%;
+    height: 200px;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+.your-gold {
+    margin: 50px 0 0 4%;
+}
+
+#yourGold {
+    width: 50px;
+}
+
+.activity {
+    padding-left: 10px;
+    border: 3px solid black;
+    overflow-y: scroll;
+    height: 200px;
+}
+
+.win {
+    color: hsl(126deg 86% 34%);
+}
+
+.loose {
+    color: hsl(0deg 69% 49%);
+}
+
+h2 {
+    margin-top: 50px;
+}
