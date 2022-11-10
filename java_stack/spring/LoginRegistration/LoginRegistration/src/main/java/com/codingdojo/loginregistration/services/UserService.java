@@ -1,5 +1,6 @@
 package com.codingdojo.loginregistration.services;
 
+import java.util.List;
 import java.util.Optional;
     
 
@@ -8,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import com.codingdojo.loginregistration.models.Book;
 import com.codingdojo.loginregistration.models.LoginUser;
 import com.codingdojo.loginregistration.models.User;
+import com.codingdojo.loginregistration.repositories.BookRepository;
 import com.codingdojo.loginregistration.repositories.UserRepository;
     
 
@@ -19,8 +22,16 @@ public class UserService {
     
     @Autowired
     private UserRepository userRepo;
+    private BookRepository bookRepo;
     
-    public User register(User newUser, BindingResult result) {
+    
+    
+    public UserService(UserRepository userRepo, BookRepository bookRepo) {
+		this.userRepo = userRepo;
+		this.bookRepo = bookRepo;
+	}
+
+	public User register(User newUser, BindingResult result) {
         if(userRepo.findByEmail(newUser.getEmail()).isPresent()) {
             result.rejectValue("email", "Unique", "This email is already in use!");
         }
@@ -65,5 +76,27 @@ public class UserService {
             return null;
         }
     }
+    
+    public Book createBook(Book b) {
+        return bookRepo.save(b);
+    }
+    
+    public Book updateBook(Book b) {
+        return bookRepo.save(b);
+    }
+    
+    public List<Book> allBooks() {
+    	   return bookRepo.findAll();
+    	}
+    
+    public Book findBook(Long id) {
+    	return this.bookRepo.findById(id).orElse(null);
+ 	}
+    
+    public void deleteBook(Long id) {
+   	 
+   	 bookRepo.deleteById(id);   
+}
+    
     
 }

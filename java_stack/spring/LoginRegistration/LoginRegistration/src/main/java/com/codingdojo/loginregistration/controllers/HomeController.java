@@ -1,5 +1,7 @@
 package com.codingdojo.loginregistration.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
     
@@ -9,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.codingdojo.loginregistration.models.Book;
 import com.codingdojo.loginregistration.models.LoginUser;
 import com.codingdojo.loginregistration.models.User;
 import com.codingdojo.loginregistration.services.UserService;
@@ -28,6 +33,7 @@ public class HomeController {
         model.addAttribute("newLogin", new LoginUser());
         return "index.jsp";
     }
+    
     
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("newUser") User newUser, 
@@ -50,15 +56,17 @@ public class HomeController {
             return "index.jsp";
         }
         session.setAttribute("user_id", user.getId());
-        return "redirect:/home";
+        return "redirect:/books";
     }
     
-    @GetMapping("/home")
+    @GetMapping("/books")
     public String home(Model model, HttpSession session) {
         if (session.getAttribute("user_id") != null) {
         Long user_id = (Long) session.getAttribute("user_id");
         User thisUser = userServ.findUserById(user_id);
+   
         model.addAttribute("thisUser", thisUser);
+        model.addAttribute("books", userServ.allBooks());
         return "home.jsp";
     }
         else {
@@ -73,4 +81,73 @@ public class HomeController {
 
     }
     
+    @GetMapping("/books/new")
+    public String newBook(Model model) {
+        model.addAttribute("newUser", new User());
+        model.addAttribute("newLogin", new LoginUser());
+        model.addAttribute("newBook", new Book());
+        return "newBook.jsp";
+    }
+    
+    @PostMapping("/create/book")
+    public String createBook(@Valid @ModelAttribute("newBook") Book newBook, 
+            BindingResult result, Model model, HttpSession session) {
+    	
+        if(result.hasErrors()) {
+            return "newBook.jsp";
+        }
+        
+        userServ.createBook(newBook);
+        Long user_id = (Long) session.getAttribute("user_id");
+        User thisUser = userServ.findUserById(user_id);
+        newBook.setUser(thisUser);
+        userServ.updateBook(newBook);
+        
+        return "redirect:/books";
+    }
+    
+    @RequestMapping("/books/{id}")
+	 public String oneBook(@PathVariable("id") Long id, Model model, HttpSession session) {
+	     Book book = userServ.findBook(id);
+	     model.addAttribute("thisBook", book);
+	     Long user_id = (Long) session.getAttribute("user_id");
+	     model.addAttribute("user_id", user_id);
+	     
+	     
+	     return "showBook.jsp";
+	 }
+    
+    @RequestMapping("/books/{id}/edit")
+	 public String editBook(@PathVariable("id") Long id, Model model, HttpSession session) {
+	     Book book = userServ.findBook(id);
+	     model.addAttribute("thisBook", book);
+	     Long user_id = (Long) session.getAttribute("user_id");
+	     model.addAttribute("user_id", user_id);
+    	
+	    
+	     return "editBook.jsp";
+	 }
+    
+    @PostMapping("/update/book/{id}")
+    public String updateBook(@Valid @PathVariable("id") Long id, @ModelAttribute("newBook") Book newBook, 
+            BindingResult result, Model model, HttpSession session) {
+    	
+        if(result.hasErrors()) {
+            return "editBook.jsp";
+        }
+        
+        Long user_id = (Long) session.getAttribute("user_id");
+        User thisUser = userServ.findUserById(user_id);
+        newBook.setUser(thisUser);
+        userServ.updateBook(newBook);
+        
+        return "redirect:/books";
+    }
+    
+    @RequestMapping(value="/delete/books/{id}")
+    public String destroy(@PathVariable("id") Long id) {
+        userServ.deleteBook(id);
+        
+        return "redirect:/books";
+    }
 }
