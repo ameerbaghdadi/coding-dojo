@@ -58,6 +58,10 @@
        
         <input type="submit" value="Submit" class="btn btn-primary mt-3" />
     </form:form>
+    <form:form action="/delete/books/${thisBook.id}" method="post" modelAttribute="newBook" class="mx-auto w-50">
+       
+        <input type="submit" value="Delete Book" class="btn btn-danger mt-3" />
+    </form:form>
 
 </body>
 </html>
