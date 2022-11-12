@@ -1,6 +1,7 @@
 package com.codingdojo.loginregistration.models;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +15,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="books")
@@ -41,6 +43,18 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
+    
+	
+	public User getBorrower() {
+		return borrower;
+	}
+
+	public void setBorrower(User borrower) {
+		this.borrower = borrower;
+	}
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="borrower_id")
+    private User borrower;
     
     public User getUser() {
 		return user;

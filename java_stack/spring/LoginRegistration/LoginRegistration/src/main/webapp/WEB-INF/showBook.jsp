@@ -36,7 +36,7 @@
   <h1>${thisBook.title}</h1>
 </div>
 <div>
-<p><a href="/home">back to the shelves</a></p>
+<p><a href="/bookmarket">back to the shelves</a></p>
 </div>
 </div>
 <div class="w-50 mx-auto mt-5">

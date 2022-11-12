@@ -96,7 +96,12 @@ public class UserService {
     public void deleteBook(Long id) {
    	 
    	 bookRepo.deleteById(id);   
-}
+    }
+    
+    public List<Book> booksNotInBorrow() {
+      	 
+      	return bookRepo.borrowerIsNull();   
+       }
     
     
 }

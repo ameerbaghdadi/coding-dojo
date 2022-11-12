@@ -44,7 +44,7 @@ public class HomeController {
             return "index.jsp";
         }
         session.setAttribute("user_id", newUser.getId());
-        return "redirect:/home";
+        return "redirect:/bookmarket";
     }
     
     @PostMapping("/login")
@@ -56,10 +56,10 @@ public class HomeController {
             return "index.jsp";
         }
         session.setAttribute("user_id", user.getId());
-        return "redirect:/books";
+        return "redirect:/bookmarket";
     }
     
-    @GetMapping("/books")
+    @GetMapping("/bookmarket")
     public String home(Model model, HttpSession session) {
         if (session.getAttribute("user_id") != null) {
         Long user_id = (Long) session.getAttribute("user_id");
@@ -67,6 +67,7 @@ public class HomeController {
    
         model.addAttribute("thisUser", thisUser);
         model.addAttribute("books", userServ.allBooks());
+        model.addAttribute("withOutBorrow", userServ.booksNotInBorrow());
         return "home.jsp";
     }
         else {
@@ -103,7 +104,7 @@ public class HomeController {
         newBook.setUser(thisUser);
         userServ.updateBook(newBook);
         
-        return "redirect:/books";
+        return "redirect:/bookmarket";
     }
     
     @RequestMapping("/books/{id}")
@@ -141,13 +142,38 @@ public class HomeController {
         newBook.setUser(thisUser);
         userServ.updateBook(newBook);
         
-        return "redirect:/books";
+        return "redirect:/bookmarket";
     }
     
     @RequestMapping(value="/delete/books/{id}")
     public String destroy(@PathVariable("id") Long id) {
         userServ.deleteBook(id);
         
-        return "redirect:/books";
+        return "redirect:/bookmarket";
     }
+    
+    @RequestMapping("/borrow/book/{id}")
+    public String borrowBook(@Valid @PathVariable("id") Long id, Model model, HttpSession session) {
+        
+        Long user_id = (Long) session.getAttribute("user_id");
+        User thisUser = userServ.findUserById(user_id);
+        Book thisBook = userServ.findBook(id);
+        model.addAttribute("thisBook", thisBook);
+        thisBook.setBorrower(thisUser);
+        userServ.updateBook(thisBook);
+        
+        return "redirect:/bookmarket";
+    }
+    
+    @RequestMapping("/return/book/{id}")
+    public String returnBook(@Valid @PathVariable("id") Long id, Model model, HttpSession session) {
+        
+        Book thisBook = userServ.findBook(id);
+        model.addAttribute("thisBook", thisBook);
+        thisBook.setBorrower(null);
+        userServ.updateBook(thisBook);
+        
+        return "redirect:/bookmarket";
+    }
+    
 }
