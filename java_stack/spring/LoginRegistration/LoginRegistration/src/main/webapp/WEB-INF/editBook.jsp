@@ -56,7 +56,7 @@
             <form:errors path="mythoughts" class="text-danger" />
         </div>
        
-        <input type="submit" value="Submit" class="btn btn-primary mt-3" />
+        <input type="submit" value="Submit" class="btn btn-primary mt-3"/>
     </form:form>
     <form:form action="/delete/books/${thisBook.id}" method="post" modelAttribute="newBook" class="mx-auto w-50">
        
