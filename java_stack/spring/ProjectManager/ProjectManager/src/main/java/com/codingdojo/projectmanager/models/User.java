@@ -1,12 +1,19 @@
 package com.codingdojo.projectmanager.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -48,15 +55,35 @@ public class User {
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
     
-//    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-//    private List<Book> book;
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<Project> project;
     
-//    @OneToMany(mappedBy="borrower", fetch = FetchType.LAZY)
-//    private List<Book> borrow;
-  
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "team_members", 
+        joinColumns = @JoinColumn(name = "member_id"), 
+        inverseJoinColumns = @JoinColumn(name = "project_id")
+    )     
+    private List<Project> projects;
 
 	public User() {
 		
+	}
+
+	public List<Project> getProject() {
+		return project;
+	}
+
+	public void setProject(List<Project> project) {
+		this.project = project;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
 
 	public Long getId() {
