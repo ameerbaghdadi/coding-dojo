@@ -17,16 +17,20 @@ export default (props) => {
             })
             .catch(err => console.error(err));
     }, []);
-    
+
     const addToDom = (product) => {
         setProducts([...products, product]);
+    }
+
+    const removeFromDom = productId => {
+        setProducts(products.filter(product => product._id != productId));
     }
 
     return (
         <div>
             <Form submitSuccess={addToDom}/>
             <hr/>
-            {loaded && <ProductsList products={products}/>}
+            {loaded && <ProductsList products={products} removeFromDom={removeFromDom}/>}
         </div>
     )
 }
