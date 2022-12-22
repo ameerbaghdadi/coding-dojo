@@ -26,9 +26,16 @@ export default (props) => {
         setProducts(products.filter(product => product._id != productId));
     }
 
+    const createProduct = product => {
+        axios.post('http://localhost:8000/api/products/new', product)
+            .then(res => {
+                setProducts([...products, res.data]);
+            })
+    }
+
     return (
         <div>
-            <Form submitSuccess={addToDom}/>
+            <Form submitSuccess={addToDom} onSubmitProp={createProduct} initialTitle="" initialPrice="" initialDescription=""/>
             <hr/>
             {loaded && <ProductsList products={products} removeFromDom={removeFromDom}/>}
         </div>

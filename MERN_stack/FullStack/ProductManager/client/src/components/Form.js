@@ -3,20 +3,21 @@ import axios from 'axios';
 
 const Form = (props) => {
   
-  const { submitSuccess } = props;
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
+  const { onSubmitProp, submitSuccess, initialPrice, initialDescription, initialTitle } = props;
+  const [title, setTitle] = useState(initialTitle);
+  const [price, setPrice] = useState(initialPrice);
+  const [description, setDescription] = useState(initialDescription);
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    axios.post('http://localhost:8000/api/products/new', {
-      title,
-      price,
-      description
-    })
-      .then(res => submitSuccess(res.data))
-      .catch(err => console.log(err))
+    // axios.post('http://localhost:8000/api/products/new', {
+    //   title,
+    //   price,
+    //   description
+    // })
+    //   .then(res => submitSuccess(res.data))
+    //   .catch(err => console.log(err))
+    onSubmitProp({title, price, description});
   }
 
   return (
@@ -36,7 +37,7 @@ const Form = (props) => {
         <label>Description</label><br/>
         <input type="text" onChange={(e) => setDescription(e.target.value)} value={description}/>
         </p>
-        <input type="submit" value="Create"/>
+        <input type="submit" value="Submit"/>
       </form>
     </div>
   )

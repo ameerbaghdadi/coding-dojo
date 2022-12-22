@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import Form from '../components/Form';
 
 const Update = (props) => {
 
@@ -8,6 +9,7 @@ const Update = (props) => {
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
+    
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/products/' + id)
@@ -31,7 +33,7 @@ const Update = (props) => {
 
   return (
     <div>
-      <h1>Update a Product</h1>
+      {/* <h1>Update a Product</h1>
       <p><Link to={'/'}>Home</Link></p>
       <form onSubmit={updateProduct}>
         <p>
@@ -61,7 +63,23 @@ const Update = (props) => {
         <p>
             <input type="submit" value="Update"/>
         </p>
-      </form>
+      </form> */}
+
+      {/* <Form
+        submitSuccess={updateProduct}
+        initialTitle={title}
+        initialPrice={price}
+        initialDescription={description}
+      /> */}
+      <Form 
+      onSubmitProp={updateProduct}
+      initialTitle={title}
+      initialPrice={price}
+      initialDescription={description}
+      />
+      <p>{title}</p>
+      <p>{price}</p>
+      <p>{description}</p>
     </div>
   )
 }
