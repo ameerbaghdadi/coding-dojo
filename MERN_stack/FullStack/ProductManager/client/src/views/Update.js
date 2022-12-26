@@ -6,27 +6,32 @@ import Form from '../components/Form';
 const Update = (props) => {
 
     const { id } = useParams();
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState('');
-    const [description, setDescription] = useState('');
+    // const [title, setTitle] = useState('');
+    // const [price, setPrice] = useState('');
+    // const [description, setDescription] = useState('');
+    const [product, setProduct] = useState();
+    const [loaded, setLoaded] = useState(false);
     
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/products/' + id)
             .then(res => {
-                setTitle(res.data.title);
-                setPrice(res.data.price);
-                setDescription(res.data.description);
+                // setTitle(res.data.title);
+                // setPrice(res.data.price);
+                // setDescription(res.data.description);
+                setProduct(res.data);
+                setLoaded(true);
             })
     }, []);
 
-    const updateProduct = e =>{
-        e.preventDefault();
-        axios.put('http://localhost:8000/api/products/update/' + id, {
-            title,
-            price,
-            description
-        })
+    const updateProduct = product =>{
+        // e.preventDefault();
+        axios.put('http://localhost:8000/api/products/update/' + id,
+            // title,
+            // price,
+            // description
+            product
+        )
             .then(res => console.log(res))
             .catch(err => console.error(err));
     }
@@ -71,15 +76,17 @@ const Update = (props) => {
         initialPrice={price}
         initialDescription={description}
       /> */}
-      <Form 
-      onSubmitProp={updateProduct}
-      initialTitle={title}
-      initialPrice={price}
-      initialDescription={description}
-      />
-      <p>{title}</p>
-      <p>{price}</p>
-      <p>{description}</p>
+      {loaded && (
+          <Form 
+          onSubmitProp={updateProduct}
+          initialTitle={product.title}
+          initialPrice={product.price}
+          initialDescription={product.description}
+          />
+      )}
+      {/* <p>{product.title}</p>
+      <p>{product.price}</p>
+      <p>{product.description}</p> */}
     </div>
   )
 }

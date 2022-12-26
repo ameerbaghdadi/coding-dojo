@@ -5,7 +5,7 @@ import ProductsList from '../components/ProductsList';
 import Detail from './Detail';
 
 export default (props) => {
-
+    
     const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
